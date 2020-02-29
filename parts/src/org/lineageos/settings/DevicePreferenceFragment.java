@@ -18,6 +18,7 @@ package org.lineageos.settings;
 
 import android.content.Context;
 import android.content.om.IOverlayManager;
+import android.content.om.OverlayInfo;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.os.RemoteException;
@@ -34,9 +35,11 @@ import androidx.preference.SwitchPreference;
 import org.lineageos.settings.utils.RefreshRateUtils;
 
 public class DevicePreferenceFragment extends PreferenceFragment {
+    private static final String OVERLAY_NO_FILL_PACKAGE = "org.lineageos.overlay.notch.nofill";
     private static final String KEY_MIN_REFRESH_RATE = "pref_min_refresh_rate";
     private static final String KEY_POWER_SAVE_REFRESH_RATE = "pref_power_save_refresh_rate";
     private static final String KEY_POWER_SAVE_REFRESH_RATE_SWITCH = "pref_power_save_refresh_rate_switch";
+    private static final String KEY_PILL_STYLE_NOTCH = "pref_pill_style_notch";
 
     private IOverlayManager mOverlayService;
     private PowerManager mPowerManagerService;
@@ -44,6 +47,7 @@ public class DevicePreferenceFragment extends PreferenceFragment {
     private ListPreference mPrefMinRefreshRate;
     private ListPreference mPrefPowerSaveRefreshRate;
     private SwitchPreference mPrefPowerSaveRefreshRateSwitch;
+    private SwitchPreference mPrefPillStyleNotch;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -65,6 +69,8 @@ public class DevicePreferenceFragment extends PreferenceFragment {
         mPrefPowerSaveRefreshRate.setOnPreferenceChangeListener(PrefListener);
         mPrefPowerSaveRefreshRateSwitch = (SwitchPreference) findPreference(KEY_POWER_SAVE_REFRESH_RATE_SWITCH);
         mPrefPowerSaveRefreshRateSwitch.setOnPreferenceChangeListener(PrefListener);
+        mPrefPillStyleNotch = (SwitchPreference) findPreference(KEY_PILL_STYLE_NOTCH);
+        mPrefPillStyleNotch.setOnPreferenceChangeListener(PrefListener);
     }
 
     @Override
@@ -75,6 +81,13 @@ public class DevicePreferenceFragment extends PreferenceFragment {
         mPrefPowerSaveRefreshRate.setValue(Integer.toString(RefreshRateUtils.getPowerSaveRefreshRate(getActivity())));
         mPrefPowerSaveRefreshRate.setSummary(mPrefPowerSaveRefreshRate.getEntry());
         mPrefPowerSaveRefreshRateSwitch.setChecked(RefreshRateUtils.getPowerSaveRefreshRateSwitch(getActivity()));
+
+	try {
+            mPrefPillStyleNotch.setChecked(
+                !mOverlayService.getOverlayInfo(OVERLAY_NO_FILL_PACKAGE, 0).isEnabled());
+        } catch (RemoteException e) {
+            // We can do nothing
+        }
     }
 
     private final Preference.OnPreferenceChangeListener PrefListener =
@@ -83,7 +96,14 @@ public class DevicePreferenceFragment extends PreferenceFragment {
                 public boolean onPreferenceChange(Preference preference, Object value) {
                     final String key = preference.getKey();
 
-                    if (KEY_MIN_REFRESH_RATE.equals(key)) {
+		    if (KEY_PILL_STYLE_NOTCH.equals(key)) {
+                       try {
+                            mOverlayService.setEnabled(
+                            OVERLAY_NO_FILL_PACKAGE, !(boolean) value, 0);
+                    } catch (RemoteException e) {
+                        // We can do nothing
+                    }
+                   } else if (KEY_MIN_REFRESH_RATE.equals(key)) {
                         RefreshRateUtils.setRefreshRate(getActivity(), Integer.parseInt((String) value));
                         if (!mPowerManagerService.isPowerSaveMode()) {
                             RefreshRateUtils.setFPS(Integer.parseInt((String) value));
