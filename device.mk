@@ -67,6 +67,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.surface_flinger.max_frame_buffer_acquired_buffers=3
 
+# Force triple frame buffers
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.surface_flinger.max_frame_buffer_acquired_buffers=3
+
 # Camera
 PRODUCT_PACKAGES += \
     Snap
