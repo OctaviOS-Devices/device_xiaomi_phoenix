@@ -147,6 +147,10 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.btconfigstore@1.0.vendor \
     vendor.qti.hardware.btconfigstore@2.0.vendor
 
+# Force triple frame buffers
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.surface_flinger.max_frame_buffer_acquired_buffers=3
+
 # Camera
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
