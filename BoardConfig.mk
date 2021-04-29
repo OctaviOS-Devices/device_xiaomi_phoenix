@@ -66,6 +66,9 @@ endif
 # Display
 TARGET_USES_HWC2 := true
 
+# HWUI
+HWUI_COMPILE_FOR_PERF := true
+
 # DRM
 TARGET_ENABLE_MEDIADRM_64 := true
 
