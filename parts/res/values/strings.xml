@@ -23,6 +23,11 @@
     <string name="refresh_rate_tile_title">Refresh Rate</string>
     <string name="refresh_rate_tile_disabled">Battery saver enabled</string>
 
+    <!-- Log Tile -->
+    <string name="quick_settings_log_tile_label">LogTile</string>
+    <string name="quick_settings_log_tile_dialog_title">Options</string>
+    <string name="cannot_get_su">Action failed because of missing superuser access</string>
+
     <!-- Dirac settings -->
     <string name="dirac_title">Dirac sound enhancer</string>
     <string name="dirac_summary">Optimize audio quality</string>
