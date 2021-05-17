@@ -5,9 +5,10 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/evolution_phoenix.mk
+    $(LOCAL_DIR)/octavi_phoenix.mk
 
 COMMON_LUNCH_CHOICES := \
-    evolution_phoenix-user \
-    evolution_phoenix-userdebug \
-    evolution_phoenix-eng
+    octavi_phoenix-user \
+    octavi_phoenix-userdebug \
+    octavi_phoenix-eng
+
