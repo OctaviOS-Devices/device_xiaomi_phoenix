@@ -1,0 +1,25 @@
+[
+    {
+        "repository":   "android_kernel_xiaomi_phoenix",
+        "target_path":  "kernel/xiaomi/phoenix"
+    },
+    {
+        "repository":   "vendor_xiaomi_phoenix",
+        "target_path":  "vendor/xiaomi/phoenix"
+    },
+    {
+        "repository":   "vendor_xiaomi_miuicamera", 
+        "target_path":  "vendor/xiaomi/miuicamera"
+    }       
+    {
+        "repository":   "vendor_xiaomi_google",
+        "target_path":  "vendor/xiaomi/google"
+    }
+    {
+    	"repository":	"kdrag0n/proton-clang",
+	"remote":	"github",
+	"clone-depth":	"1",
+	"target_path":	"prebuilts/clang/host/linux-x86/clang-proton",
+	"branch":	"master"
+    }
+]
