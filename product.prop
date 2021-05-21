@@ -57,3 +57,6 @@ persist.sys.wfd.virtual=0
 
 # Seamless transfer
 sys.fflag.override.settings_seamless_transfer=true
+
+# Gboard
+ro.com.google.ime.kb_pad_port_b=1
