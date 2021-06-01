@@ -456,6 +456,10 @@ PRODUCT_PACKAGES += \
     fstab.emmc \
     ueventd.qcom.rc
 
+# Remove Packages
+PRODUCT_PACKAGES += \
+    RemovePackages
+
 # RIL
 PRODUCT_PACKAGES += \
     android.hardware.radio.config@1.1 \
