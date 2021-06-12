@@ -18,6 +18,11 @@
     <string name="advanced_settings_summary">Device Specific Customisations</string>
 
     <string name="display_title">Display</string>
+    <string name="audio_settings_title">Audio</string>
+
+    <!-- Dirac settings -->
+    <string name="dirac_title">POCO sound enhancer</string>
+    <string name="dirac_summary">Optimize audio quality</string>
 
     <!-- KCal -->
     <string name="device_kcal_title">Display Color Calibration</string>
