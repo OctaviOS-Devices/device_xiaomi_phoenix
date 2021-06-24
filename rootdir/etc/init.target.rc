@@ -536,8 +536,3 @@ on property:persist.sys.miui_optimization=false
 on property:persist.sys.miui_optimization=true
     write /dev/stune/top-app/schedtune.prefer_idle 0
     write /dev/stune/top-app/schedtune.boost 0
-
-on boot
-    # SMART CHARGING
-    chown system system /sys/class/power_supply/battery/input_suspend
-    chmod 0666 /sys/class/power_supply/battery/input_suspend

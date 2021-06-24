@@ -19,9 +19,6 @@
     -->
     <integer name="config_fingerprintSensorLocation">3</integer>
 
-   <!-- Smart Charging -->
-   <bool name="config_supportSmartCharging">true</bool>
-
     <!-- IDs for each color mode. The values must match the corresponding constants in
          android.view.Display -->
     <integer-array name="color_mode_ids">
