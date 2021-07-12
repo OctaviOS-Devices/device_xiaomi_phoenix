@@ -50,3 +50,5 @@
 # Vendor overlay
 /(product|system/product)/vendor_overlay/[0-9]+/overlay(/.*)? u:object_r:vendor_overlay_file:s0
 
+# Fast Charge
+/sys/kernel/fast_charge/force_fast_charge                                                 u:object_r:sysfs_fastcharge:s0
