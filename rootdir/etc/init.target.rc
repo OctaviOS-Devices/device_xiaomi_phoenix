@@ -183,6 +183,11 @@ on boot
 #    class late_start
 #    user camera
 #    group camera system inet input graphics
+
+    # GPU boost
+    chown system system /sys/class/kgsl/kgsl-3d0/min_pwrlevel
+    chmod 0660 /sys/class/kgsl/kgsl-3d0/min_pwrlevel
+
 #pd-mapper
 service vendor.pd_mapper /vendor/bin/pd-mapper
     class core
