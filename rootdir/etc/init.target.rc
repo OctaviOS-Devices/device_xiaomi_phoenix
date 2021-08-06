@@ -232,6 +232,11 @@ on charger
     wait /dev/block/platform/soc/1da4000.ufshc/by-name/persist
     start leds-sh
 
+service mi_thermald /vendor/bin/mi_thermald
+    class core
+    user root
+    group system
+
 ## import cne init file
 #on post-fs
 #    export LD_PRELOAD /vendor/lib/libNimsWrap.so
