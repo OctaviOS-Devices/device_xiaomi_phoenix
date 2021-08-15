@@ -43,4 +43,26 @@
             android:defaultValue="2" />
 
     </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/lcd_features_title">
+
+        <ListPreference
+            android:key="pref_hbm"
+            android:title="@string/lcd_hbm_title"
+            android:summary="@string/lcd_hbm_info"
+            android:entries="@array/lcd_hbm_modes"
+            android:entryValues="@array/lcd_hbm_values"
+            android:defaultValue="0" />
+
+        <ListPreference
+            android:key="pref_cabc"
+            android:title="@string/lcd_cabc_title"
+            android:summary="@string/lcd_cabc_info"
+            android:entries="@array/lcd_cabc_modes"
+            android:entryValues="@array/lcd_cabc_values"
+            android:defaultValue="0" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>
