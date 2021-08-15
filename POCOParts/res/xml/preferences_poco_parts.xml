@@ -32,6 +32,16 @@
                 android:targetPackage="com.xiaomi.parts.kcal" />
         </Preference>
 
+        <Preference
+            android:key="lcd_settings"
+            android:icon="@drawable/ic_lcd"
+            android:title="@string/lcd_features_title"
+            android:summary="@string/lcd_features_summary">
+            <intent
+                 android:targetPackage="org.lineageos.settings"
+                 android:targetClass="org.lineageos.settings.display.LcdFeaturesPreferenceActivity" />
+        </Preference>
+
     </PreferenceCategory>
 
     <PreferenceCategory

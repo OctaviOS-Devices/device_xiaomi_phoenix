@@ -53,6 +53,35 @@
         </activity>
 
         <activity
+            android:name=".display.LcdFeaturesPreferenceActivity"
+            android:label="@string/lcd_features_title"
+            android:theme="@style/Theme.Main">
+            <intent-filter>
+                <action android:name="com.android.settings.action.IA_SETTINGS" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".display.HbmTileService"
+            android:icon="@drawable/ic_hbm"
+            android:label="@string/lcd_hbm_tile_title"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE"/>
+            </intent-filter>
+        </service>
+
+        <service
+            android:name=".display.CabcTileService"
+            android:icon="@drawable/ic_cabc"
+            android:label="@string/lcd_cabc_title"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE"/>
+            </intent-filter>
+        </service>
+
+        <activity
             android:name=".doze.DozeSettingsActivity"
             android:label="@string/ambient_display_title"
             android:theme="@style/Theme.Main">
@@ -105,4 +134,3 @@
         </service>
     </application>
 </manifest>
-
