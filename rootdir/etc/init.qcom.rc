@@ -78,6 +78,8 @@ on init
     # Allow both charger and hal_light to access panel0 backlight
     chown system system /sys/class/backlight/panel0-backlight/brightness
 
+    # Change permissions for /dev/diag
+    chmod 0666 /dev/diag
 
 on post-fs
     chmod 0755 /sys/kernel/debug/tracing
