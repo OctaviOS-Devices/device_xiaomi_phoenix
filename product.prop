@@ -100,3 +100,7 @@ debug.hwui.renderer=skiavk
 # IORap
 iorapd.readahead.enable=true
 ro.iorapd.enable=true
+
+# Set stock DPI
+ro.sf.lcd_density=440
+
