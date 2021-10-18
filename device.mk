@@ -454,10 +454,6 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.perf@2.1.vendor \
     vendor.qti.hardware.perf@2.2.vendor
 
-# Overlays
-PRODUCT_PACKAGES += \
-    NoCutoutOverlay
-
 # Power
 PRODUCT_PACKAGES += \
     android.hardware.power-service-qti
