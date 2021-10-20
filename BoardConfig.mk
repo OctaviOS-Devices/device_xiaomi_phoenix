@@ -121,45 +121,29 @@ TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_phoenix
 TARGET_RECOVERY_DEVICE_MODULES := libinit_phoenix
 
 # kernel
-TARGET_KERNEL_CONFIG := phoenix_defconfig
+BOARD_RAMDISK_OFFSET := 0x01000000
+BOARD_KERNEL_TAGS_OFFSET := 0x00000100
+BOARD_KERNEL_OFFSET := 0x00008000
+BOARD_KERNEL_SECOND_OFFSET := 0x00f00000
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
-BOARD_KERNEL_SEPARATED_DTBO := true
-TARGET_KERNEL_CLANG_VERSION := proton
-TARGET_KERNEL_CLANG_COMPILE := true
-TARGET_KERNEL_SOURCE := kernel/xiaomi/phoenix
 TARGET_KERNEL_ADDITIONAL_FLAGS := \
-    HOSTCFLAGS="-Wno-unused-command-line-argument"
-
-BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200n8 earlycon=msm_geni_serial,0x880000
-BOARD_KERNEL_CMDLINE += androidboot.hardware=qcom androidboot.console=ttyMSM0
-BOARD_KERNEL_CMDLINE += androidboot.memcg=1
-BOARD_KERNEL_CMDLINE += androidboot.usbcontroller=a600000.dwc3
-BOARD_KERNEL_CMDLINE += service_locator.enable=1
-BOARD_KERNEL_CMDLINE += lpm_levels.sleep_disabled=1
-BOARD_KERNEL_CMDLINE += loop.max_part=7
-BOARD_KERNEL_CMDLINE += msm_rtb.filter=0x237 swiotlb=1
-BOARD_KERNEL_CMDLINE += kpti=off cgroup.memory=nokmem,nosocket
+    DTC_EXT=$(shell pwd)/prebuilts/misc/$(HOST_OS)-x86/dtc/dtc
+BOARD_KERNEL_SEPARATED_DTBO := true
+BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200n8 earlycon=msm_geni_serial,0x880000 androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=1  loop.max_part=7 androidboot.usbcontroller=a600000.dwc3
 BOARD_KERNEL_CMDLINE += androidboot.init_fatal_reboot_target=recovery
-
-# TARGET_KERNEL_APPEND_DTB handling
-ifeq ($(strip $(PRODUCT_USE_DYNAMIC_PARTITIONS)),true)
+TARGET_KERNEL_ARCH := arm64
 BOARD_KERNEL_IMAGE_NAME := Image.gz
-TARGET_KERNEL_APPEND_DTB := false
-else
-BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
-TARGET_KERNEL_APPEND_DTB := true
-endif
-
-# Set header version for bootimage
-ifneq ($(strip $(TARGET_KERNEL_APPEND_DTB)),true)
-# Enable DTB in bootimage and set header version
+TARGET_KERNEL_CONFIG := phoenix_defconfig
+TARGET_KERNEL_CLANG_COMPILE := true
+TARGET_KERNEL_CLANG_VERSION := proton
+TARGET_KERNEL_SOURCE := kernel/xiaomi/phoenix
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_BOOTIMG_HEADER_VERSION := 2
-else
-BOARD_BOOTIMG_HEADER_VERSION := 1
-endif
 BOARD_MKBOOTIMG_ARGS := --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
+
+TARGET_KERNEL_ADDITIONAL_FLAGS := \
+    HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument"
 
 # Media
 TARGET_DISABLED_UBWC := true
