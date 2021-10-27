@@ -547,6 +547,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     lib-imsvt
 
+# System
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.binary_xml=false
+
 # Soter
 PRODUCT_PACKAGES += \
     libhwbinder.vendor
