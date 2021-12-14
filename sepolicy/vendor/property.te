@@ -1,2 +1,5 @@
 # Mlipay
 type ifaa_prop, property_type;
+
+# Power Hal
+vendor_internal_prop(vendor_power_prop);

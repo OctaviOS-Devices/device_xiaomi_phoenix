@@ -64,7 +64,6 @@ vendor.audio.feature.hifi_audio.enable=false
 vendor.audio.feature.hwdep_cal.enable=false
 vendor.audio.feature.incall_music.enable=true
 vendor.audio.feature.keep_alive.enable=false
-vendor.audio.feature.kpi_optimize.enable=true
 vendor.audio.feature.maxx_audio.enable=false
 vendor.audio.feature.multi_voice_session.enable=true
 vendor.audio.feature.ras.enable=true
@@ -205,6 +204,9 @@ ro.vendor.perf.scroll_opt=true
 
 # RCS
 persist.rcs.supported=0
+
+# Netflix
+vendor.netflix.bsp_rev=Q6150-17263-1
 
 # Data modules
 persist.vendor.data.mode=concurrent
