@@ -38,11 +38,6 @@ PRODUCT_COPY_FILES += \
    $(LOCAL_PATH)/configs/google-hiddenapi-package-whitelist-carriersettings.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/google-hiddenapi-package-whitelist-carriersettings.xml \
    $(LOCAL_PATH)/permissions/privapp-permissions-google-carriersettings.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-google-carriersettings.xml
 
-# ATRACE_HAL
-PRODUCT_PACKAGES += \
-    android.hardware.atrace@1.0-service \
-    android.hardware.atrace@1.0.vendor
-
 # Audio
 PRODUCT_PACKAGES += \
     android.hardware.audio.service \
